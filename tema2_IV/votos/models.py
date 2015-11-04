@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Empresa(models.Model):
@@ -6,7 +7,7 @@ class Empresa(models.Model):
 
     def get_media(self):
         media = 0.0
-        all_calificaciones = Calificacion.objects.filter(empresa = self)
+        all_calificaciones = Calificacion.objects.filter(empresa=self)
 
         for cal in all_calificaciones:
             media += cal.calificacion
@@ -15,8 +16,7 @@ class Empresa(models.Model):
 
         return media
 
-
-
 class Calificacion(models.Model):
     empresa = models.ForeignKey(Empresa)
+    usuario = models.ForeignKey(User, default=None)
     calificacion = models.IntegerField()

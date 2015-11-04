@@ -1,0 +1,9 @@
+{% if ultimas_calificaciones %}
+    <ul>
+    {% for calificacion in ultimas_calificaciones %}
+        <li><a href="/polls/{{ calificacion.empresa.nombre }}/">{{ calificacion.calificacion }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Todavia no hay calificaciones disponibles.</p>
+{% endif %}
