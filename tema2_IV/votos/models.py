@@ -18,5 +18,5 @@ class Empresa(models.Model):
 
 class Calificacion(models.Model):
     empresa = models.ForeignKey(Empresa)
-    usuario = models.ForeignKey(User, default=None)
+    usuario = models.ForeignKey(User, default='')
     calificacion = models.IntegerField()
