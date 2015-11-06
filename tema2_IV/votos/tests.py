@@ -4,6 +4,8 @@ from votos.models import Calificacion
 
 from django.contrib.auth.models import User
 
+from django.test import Client
+
 
 # Create your tests here.
 class DummyTests(TestCase):
@@ -27,3 +29,20 @@ class EmpresaTest(TestCase):
         self.assertEqual(cal.empresa, emp)
         self.assertEqual(cal.calificacion, 9)
         self.assertEqual(emp.get_media(), 9.0)
+
+class ViewsTest(TestCase):
+    def setUp(self):
+
+        # definimos cliente
+        self.client = Client()
+
+    def test_index(self):
+
+        # respuesta de index
+        response = self.client.get('/')
+        # comprobamos codigo de retorno
+        self.assertEqual(response.status_code, 200)
+
+        count = Calificacion.objects.count()
+
+        self.assertEqual(len(response.context['ultimas_calificaciones']), count)
