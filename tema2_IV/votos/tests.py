@@ -18,7 +18,7 @@ class EmpresaTest(TestCase):
         Empresa.objects.create(nombre = "TestEmpresa")
         usuario = User.objects.create_user(
             username='pepe', email='pepe@ugr.es', password='top_secret')
-        Calificacion.objects.create(empresa = Empresa.objects.get(nombre = "TestEmpresa"),usuario=usuario, calificacion = 9)
+        Calificacion.objects.create(empresa = Empresa.objects.get(nombre = "TestEmpresa"), usuario=usuario, calificacion = 9)
 
     def test_all(self):
         emp = Empresa.objects.get(nombre = "TestEmpresa")
