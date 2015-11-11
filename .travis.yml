@@ -10,5 +10,5 @@ install: "pip install -r requirements.txt"
 script: make test
 
 # command to deploy app on azure
-deploy:  
-  provider: azure_web_apps
+#deploy:  
+#  provider: azure_web_apps
